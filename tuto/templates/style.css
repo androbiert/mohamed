@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.question {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.results {
+    list-style: none;
+    padding: 0;
+}
+
+.result {
+    margin: 10px 0;
+}
+
+.choice {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.bar {
+    background-color: #ccc;
+    height: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.fill {
+    background-color: #007BFF;
+    border-radius: 5px;
+    height: 100%;
+    width: 0;
+}
+
+.percentage {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+    text-align: right;
+}
+
+/* Optional: Add transition for smooth bar animations */
+.bar .fill {
+    transition: width 0.5s;
+}

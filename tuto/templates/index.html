@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #0075ffe;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 20px 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            justify-content: center;
+            text-align: center ;
+            padding: 4% 0 ;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        li:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+        }
+
+        a {
+            text-decoration: none;
+            color: #0074D9;
+        }
+
+        button  {
+            background-color: #4CAF50;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button a {
+            color: black ; 
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to the Polls</h1>
+    </div>
+    <div class="container">
+        <ul>
+            {% if latest_question_list %}
+            {% for question in latest_question_list %}
+            <li>
+                <h2><a href="{% url 'polls:details' question.id %}">{{ question.text }}</a></h2>
+                <button><a href="{% url 'polls:details' question.id %}">Vote Now</a></button>
+            </li>
+            {% endfor %}
+            {% else %}
+            <p>No polls are available.</p>
+            {% endif %}
+            
+        </ul>
+        <form action="{% url "polls:index" %}" method="post">
+            {% csrf_token %}
+            {{ form.text.label_tag }}: {{ form.text }}
+            <input type="submit" value="publish"> 
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 5% auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .question {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .results {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .result {
+            margin: 10px 0;
+        }
+        
+        .choice {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .bar {
+            background-color: #ccc;
+            height: 20px;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .fill {
+            background-color: #007BFF;
+            border-radius: 5px;
+            height: 100%;
+            width: 0;
+        }
+        
+        .percentage {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        /* Optional: Add transition for smooth bar animations */
+        .bar .fill {
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Poll Results</h1>
+        <div class="question">
+            <h2>{{ question.text }}</h2>
+        </div>
+        <ul class="results">
+            {% for choice in choices %}
+                <li class="result">
+                    <span class="choice">{{ choice.choice_text }}</span>
+                    <div class="bar">
+                        <div class="fill" style="width: {{ choice.percentage }}%"></div>
+                    </div>
+                    {% comment %} <span class="percentage">{{ choice.percentage | floatformat:2 }}%</span> {% endcomment %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
+
